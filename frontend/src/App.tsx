@@ -127,8 +127,9 @@ function App() {
     if (step !== totalSteps) return;
 
     setIsSubmitting(true);
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
     try {
-      await axios.post('http://localhost:3001/api/submit-application', formData);
+      await axios.post(`${API_BASE_URL}/api/submit-application`, formData);
       setIsSubmitted(true);
     } catch (error) {
       alert('Failed to submit application. Please check if the backend is running.');
